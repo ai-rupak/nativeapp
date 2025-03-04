@@ -31,8 +31,8 @@ const RootLayout = () => {
   }
   return (
     
+    <GlobalProvider>
     <GestureHandlerRootView style={{flex: 1}}>
-      <GlobalProvider>
         <Stack>
           <Stack.Screen name="index"
             options={{headerShown:false}}/>
@@ -40,11 +40,11 @@ const RootLayout = () => {
             options={{headerShown:false}}/>
           <Stack.Screen name="(tabs)"
             options={{headerShown:false}}/>
-          {/* <Stack.Screen name="/search/[query]"
-            options={{headerShown:false}}/> */}
+          <Stack.Screen name="search/[query]"
+            options={{headerShown:false}}/>
         </Stack>
+        </GestureHandlerRootView>
       </GlobalProvider>
-    </GestureHandlerRootView>
   )
 }
 

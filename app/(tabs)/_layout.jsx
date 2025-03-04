@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import {Tabs,Redirect} from 'expo-router';
 
@@ -114,6 +114,9 @@ const TabsLayout = () => {
         }}
         />
     </Tabs>
+    <StatusBar
+          backgroundColor="#161622"
+          style="light"/>
     </>
   )
 }

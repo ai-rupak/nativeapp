@@ -3,6 +3,40 @@ import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
 import { icons } from "../constants";
 
+const styles = {
+  container: {
+    marginVertical: 8,
+  },
+  label: {
+    fontSize: 16,
+    color: 'white',
+    fontFamily: 'Poppins-Medium',
+    marginBottom: 8,
+  },
+  inputContainer: {
+    width: '100%',
+    height: 64,
+    paddingHorizontal: 16,
+    backgroundColor: '#161622',
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: '#0E0E15', // black-200 equivalent
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    flex: 1,
+    color: 'white',
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 16,
+  },
+  placeholderColor: '#7B7B8B',
+  eyeIcon: {
+    width: 24,
+    height: 24,
+  },
+};
+
 const FormField = ({
   title,
   value,
@@ -14,17 +48,15 @@ const FormField = ({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <View className={`space-y-2 ${otherStyles}`}>
-      <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
+    <View style={[styles.container, otherStyles]}>
+      <Text style={styles.label}>{title}</Text>
 
-      <View className="w-full h-16 px-4 bg-white rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center">
-        {/* style={{ borderWidth: 2, borderColor: 'black',borderRadius: 10,padding:5,marginTop:10 }}> */}
+      <View style={styles.inputContainer}>
         <TextInput
-          className="flex-1 text-white font-psemibold text-base"
-          style={{ flex:1}}
+          style={styles.input}
           value={value}
           placeholder={placeholder}
-          placeholderTextColor="#7B7B8B"
+          placeholderTextColor={styles.placeholderColor}
           onChangeText={handleChangeText}
           secureTextEntry={title === "Password" && !showPassword}
           {...props}
@@ -34,7 +66,7 @@ const FormField = ({
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}
-              className="w-6 h-6"
+              style={styles.eyeIcon}
               resizeMode="contain"
             />
           </TouchableOpacity>
