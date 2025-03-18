@@ -3,40 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
 import { icons } from "../constants";
 
-const styles = {
-  container: {
-    marginVertical: 8,
-  },
-  label: {
-    fontSize: 16,
-    color: 'white',
-    fontFamily: 'Poppins-Medium',
-    marginBottom: 8,
-  },
-  inputContainer: {
-    width: '100%',
-    height: 64,
-    paddingHorizontal: 16,
-    backgroundColor: '#161622',
-    borderRadius: 16,
-    borderWidth: 2,
-    borderColor: '#0E0E15', // black-200 equivalent
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  input: {
-    flex: 1,
-    color: 'white',
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 16,
-  },
-  placeholderColor: '#7B7B8B',
-  eyeIcon: {
-    width: 24,
-    height: 24,
-  },
-};
-
 const FormField = ({
   title,
   value,
@@ -48,15 +14,15 @@ const FormField = ({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <View style={[styles.container, otherStyles]}>
-      <Text style={styles.label}>{title}</Text>
+    <View className={`space-y-2 ${otherStyles}`}>
+      <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
 
-      <View style={styles.inputContainer}>
+      <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center">
         <TextInput
-          style={styles.input}
+          className="flex-1 text-white font-psemibold text-base"
           value={value}
           placeholder={placeholder}
-          placeholderTextColor={styles.placeholderColor}
+          placeholderTextColor="#7B7B8B"
           onChangeText={handleChangeText}
           secureTextEntry={title === "Password" && !showPassword}
           {...props}
@@ -66,7 +32,7 @@ const FormField = ({
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}
-              style={styles.eyeIcon}
+              className="w-6 h-6"
               resizeMode="contain"
             />
           </TouchableOpacity>
